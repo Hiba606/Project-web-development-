@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>World Explorer Game</title>
+    
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #2980b9, #6dd5fa);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+    }
+    .game-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .flag {
+      font-size: 80px;
+      margin: 20px 0;
+    }
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #fff;
+      color: #333;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #f1c40f;
+    }
+    #message {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    .hidden {
+      display: none;
+    }
+    #language {
+      font-style: italic;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    #streak {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    <p><a href="scratch.html" style="color: brown; font-weight: bold; text-decoration: underline;">Back to Scratch Page </a></p>
+  <div class="game-box">
+    <h1>World Explorer</h1>
+      
+    <p id="streak">Streak: 0</p>
+    <div id="flag" class="flag">🌍</div>
+    <h2 id="countryName">Country Name</h2>
+    <div id="options"></div>
+    <div id="message"></div>
+    <div id="language" class="hidden"></div>
+  </div>
+
+  <script>
+    const countries = [
+      { name: "Japan", capital: "Tokyo", language: "Japanese", flag: "🇯🇵" },
+      { name: "France", capital: "Paris", language: "French", flag: "🇫🇷" },
+      { name: "Brazil", capital: "Brasília", language: "Portuguese", flag: "🇧🇷" },
+      { name: "Germany", capital: "Berlin", language: "German", flag: "🇩🇪" },
+      { name: "Egypt", capital: "Cairo", language: "Arabic", flag: "🇪🇬" },
+      { name: "Canada", capital: "Ottawa", language: "English and French", flag: "🇨🇦" },
+      { name: "India", capital: "New Delhi", language: "Hindi and English", flag: "🇮🇳" },
+      { name: "South Korea", capital: "Seoul", language: "Korean", flag: "🇰🇷" },
+      { name: "Mexico", capital: "Mexico City", language: "Spanish", flag: "🇲🇽" },
+      { name: "Italy", capital: "Rome", language: "Italian", flag: "🇮🇹" },
+      { name: "Spain", capital: "Madrid", language: "Spanish", flag: "🇪🇸" },
+      { name: "Russia", capital: "Moscow", language: "Russian", flag: "🇷🇺" },
+      { name: "China", capital: "Beijing", language: "Mandarin", flag: "🇨🇳" },
+      { name: "Tunisia", capital: "Tunis", language: "Arabic", flag: "🇹🇳" }
+    ];
+
+    let currentCountry;
+    let streak = 0;
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function loadCountry() {
+      document.getElementById("message").textContent = "";
+      document.getElementById("language").classList.add("hidden");
+
+      currentCountry = countries[Math.floor(Math.random() * countries.length)];
+      document.getElementById("flag").textContent = currentCountry.flag;
+      document.getElementById("countryName").textContent = currentCountry.name;
+
+      let options = [currentCountry.capital];
+      while (options.length < 4) {
+        let random = countries[Math.floor(Math.random() * countries.length)].capital;
+        if (!options.includes(random)) options.push(random);
+      }
+
+      shuffle(options);
+
+      const optionButtons = options.map(capital => {
+        return `<button onclick="checkAnswer('${capital}')">${capital}</button>`;
+      }).join("");
+
+      document.getElementById("options").innerHTML = optionButtons;
+    }
+
+    function checkAnswer(answer) {
+      if (answer === currentCountry.capital) {
+        streak++;
+        document.getElementById("message").textContent = "Correct!";
+        document.getElementById("language").textContent = "Language: " + currentCountry.language;
+        document.getElementById("language").classList.remove("hidden");
+
+        if (streak >= 4) {
+          alert("You reached 4 in a row! New level unlocked!");
+          streak = 0;
+        }
+
+        setTimeout(loadCountry, 1500);
+      } else {
+        document.getElementById("message").textContent = "Wrong!";
+        streak = 0;
+        setTimeout(loadCountry, 1500);
+      }
+
+      document.getElementById("streak").textContent = "Streak: " + streak;
+    }
+
+    window.onload = loadCountry;
+  </script>
+</body>
+</html>

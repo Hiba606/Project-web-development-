@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scratch Page</title>
+  <link rel="stylesheet" href="css/scratchstyles.css" />
+</head>
+
+<body class="background" id="top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light" id="mainNav">
+    <a class="navbar-brand" href="index.html">Hiba Heni</a>
+    <ul class="navbar-nav">
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="webapp.html" >Play Web app </a></li>
+      <li><a class="nav-link" href="#favorite-shots">MY Favorite Shot</a></li>
+      <li><a class="nav-link" href="#tableau-graph">Live Tableau Graph</a></li>
+      <li><a class="nav-link" href="#tennis-video">Favorite Tennis Video</a></li>
+      <li><a class="nav-link" href="#hobbies">My Hobbies</a></li>
+
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <h1>Welcome to My Scratch Page</h1>
+
+    <div>
+      <h2 class="heading" id="hobbies">My Hobbies</h2>
+      <p>Tennis<br>Soccer<br>Traveling</p>
+    </div>
+
+    <div>
+      <ol>
+        <li><strong>Favourite tennis player</strong>
+          <ul>
+            <li>Roger Federer</li>
+            <li>Rafael Nadal</li>
+            <li>Carlos Alcaraz</li>
+            <li>Jannik Sinner</li>
+            <li>Serena Williams</li>
+          </ul>
+        </li>
+        <li><strong>Favourite soccer club</strong>
+           <ul>
+            <li>Real Madrid</li>
+            <li>Al Nassr</li>
+            <li>Club Africain</li>
+          
+          </ul>
+        </li>
+        <li><strong>Favourite Destination</strong>
+          <ul>
+            <li>Spain</li>
+            <li>Italy</li>
+            <li>Switzerland</li>
+            <li>Dubai</li>
+            <li>Seychelles</li>
+            <li>Mauritius</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <div>
+      <h2 id="favorite-shots">My Favorite Shot</h2>
+      <img src="assets/img/my%20tennis%20pic%20.png" alt="Tennis shot" width="300" />
+    </div>
+
+   
+    
+ <h2 id="tableau-graph">Live Tableau Graph</h2>
+<!-- Tableau Embed Code -->
+    <div class="tableauPlaceholder" id="vizContainer" style="position: relative; width: 100%; height: 600px;">
+  <!-- For users with JavaScript disabled, show this fallback image -->
+  <noscript>
+    <a href="https://public.tableau.com/views/RogerFederer-TheMaestro/RF">
+      <img alt="Roger Federer Tableau Visualization" 
+           src="https://public.tableau.com/static/images/Ro/RogerFederer-TheMaestro/RF/1_rss.png" 
+           style="border: none;" />
+    </a>
+  </noscript>
+  
+  <!-- Tableau visualization (Embedded Object) -->
+  <object class="tableauViz" width="100%" height="600px"
+          data="https://public.tableau.com/views/RogerFederer-TheMaestro/RF?:embed=y&:display_count=yes">
+    <!-- Parameters to embed Tableau view -->
+    <param name="host_url" value="https://public.tableau.com/" />
+    <param name="embed_code_version" value="3" />
+    <param name="site_root" value="" />
+    <param name="name" value="RogerFederer-TheMaestro/RF" />
+    <param name="tabs" value="no" />
+    <param name="toolbar" value="yes" />
+    <param name="static_image" value="https://public.tableau.com/static/images/Ro/RogerFederer-TheMaestro/RF/1.png" />
+    <param name="animate_transition" value="yes" />
+    <param name="display_static_image" value="yes" />
+    <param name="display_spinner" value="yes" />
+    <param name="display_overlay" value="yes" />
+    <param name="display_count" value="yes" />
+    <param name="language" value="en-US" />
+  </object>
+    s  </div>
+<!-- Load Tableau API to render visualization -->
+<script type="text/javascript">
+  var divElement = document.getElementById('vizContainer');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  vizElement.style.width = '100%';
+  vizElement.style.height = '600px';
+  
+  // Load the Tableau JavaScript API for rendering
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+
+    <div>
+      <h2 id="tennis-video">My Favorite Tennis Video</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/seSCvuejudM?si=FvI6Q08cBBW1az4F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <p>© 2025 Hiba Heni</p>
+    </div>
+  </div>
+  <a href="#top" class="back-to-top">Back To Top</a>
+    </body>
+</html>
+
+  \
